@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ComplaintController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/add-complaint', function () {
+    return view('add-compaint');
+});
+Route::get('/dashboard',[ComplaintController::class,'dashboard']);
+Route::post('/add-complaint',[ComplaintController::class,'addComplaint']);
+Route::get('/update-complaint/{id}',[ComplaintController::class,'updateComplaint']);
+Route::post('/update-save-complaint',[ComplaintController::class,'updateSaveComplaint']);
