@@ -30,14 +30,14 @@
             <div class="collapse navbar-collapse d-flex flex-row-reverse" id="navbarSupport" >
               <ul class="navbar-nav ml-auto" >
                 <li class="nav-item active">
-                  <a class="nav-link" href="index.html"><button type="button" class="btn btn-info">New Complaint Recieved</button></a>
+                  <a class="nav-link text-primary"  href="/adminComplaint">New Complaint</a>
                 </li>
               
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.html"><button type="button" class="btn btn-info">Resolved Complaint Recieved</button></a>
+                    <a class="nav-link text-primary" href="/adminResolvedComplaint">Resolved Complaint</a>
                   </li>
                 <li class="nav-item">
-                  <a class="btn btn-dark ml-lg-3" href="" style="margin-top: 7px;">Logout</a>
+                  <a class="btn btn-dark ml-lg-3" href="" style="    margin-top: 1px; margin-left: 36px;">Logout</a>
                 </li>
              
               </ul>
