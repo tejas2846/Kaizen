@@ -8,12 +8,69 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <style>
-    </style>
+        <link rel="stylesheet" href="../assets/css/maicons.css">
+
+        <link rel="stylesheet" href="../assets/css/bootstrap.css">
+      
+        <link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.carousel.css">
+      
+        <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
+      
+        <link rel="stylesheet" href="../assets/css/theme.css">
 
 </head>
 
 <body>
+    <header>
+
+        <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+          <div class="container">
+            <a class="navbar-brand" href="#"><span class="text-primary">Trash</span>-Control</a>
+    
+            <form action="#">
+              <div class="input-group input-navbar">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="icon-addon1"><span class="mai-search"></span></span>
+                </div>
+                <input type="text" class="form-control" placeholder="Enter keyword.." aria-label="Username" aria-describedby="icon-addon1">
+              </div>
+            </form>
+    
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupport" aria-controls="navbarSupport" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarSupport">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="about.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="doctors.html">Doctors</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="blog.html">News</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item">
+                  <a class="btn btn-dark ml-lg-3" href="">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-dark ml-lg-3" href="">Register</a>
+                </li>
+                
+              </ul>
+            </div> <!-- .navbar-collapse -->
+          </div> <!-- .container -->
+        </nav>
+      </header>
+
+      
     @if (Session()->has('status'))
         <div class="container">
             <div class="alert alert-info" role="alert">
@@ -39,13 +96,9 @@
                     <th>Image Photo</th>
                     
                     @if($resolved == false)
-                    <th colspan="3">Buttons</th>
+                    <th >Buttons</th>
                     @endif
-                    @can('isAdmin', record::class)
-                        <th>DOWNLOAD</th>
-                        <th>EDIT</th>
-                        <th>DELETE</th>
-                    @endcan
+                   <th>Last updated at </th>
                 </tr>
             </thead>
             <!--Table head-->
@@ -59,25 +112,16 @@
                         <td>{{ $users['type'] }}</td>
                         <td>{{ $users['area'] }}</td>
                         <td>{{ $users['description'] }}</td>
-                        {{-- <td>{{asset('storage/images/'.$users['image_path'])}}</td> --}}
+                     
 
                         <td><img src="{{ asset('storage/images/' . $users['image']) }}" alt="Not available"
                                 width="100px" height=100px /></td>
-
-                        {{-- <td><a href={{"download/".$users['id']}}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
-                <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-                <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-              </svg>Download</a></td> --}}
-
-                        {{-- <td><a href={{"update-complaint/".$users['id']}}>Update</a> --}}
-
-                        {{-- <td><a href={{"delete-complaint/".$users['id']}}>Delete</a> --}}
                       
                         @if($users['isResolved'] == 0)
                         <td><a href={{ 'resolved-complaint/' . $users['id'] }}><button type="button"
                             class="btn btn-success">Resolved</button></a></td>
                         @endif
-                            
+                            <td>{{$users['updated_at']}}</td>
                     </tr>
                 @endforeach
                 <tr class="table-info">
@@ -87,6 +131,14 @@
             </tbody>
         </table>
     </div>
+    <div class="container">
+        {{$data->links()}}
+    </div>
+    <style>
+        .w-5{
+            display: none;
+        }
+        </style>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
@@ -97,6 +149,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
         integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
     </script>
+    <script src="../assets/js/jquery-3.5.1.min.js"></script>
+
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="../assets/vendor/owl-carousel/js/owl.carousel.min.js"></script>
+    
+    <script src="../assets/vendor/wow/wow.min.js"></script>
+    
+    <script src="../assets/js/theme.js"></script>
 </body>
 
 </html>
