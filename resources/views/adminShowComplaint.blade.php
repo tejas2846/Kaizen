@@ -76,9 +76,10 @@
 
             <!--Table body-->
             <tbody>
+                <?php $counter = 1?>
                 @foreach ($data as $users)
                     <tr>
-                        <th scope="row">{{ $users['id'] }}</th>
+                        <th scope="row">{{ $counter++ }}</th>
 
                         <td>{{ $users['type'] }}</td>
                         <td>{{ $users['area'] }}</td>
