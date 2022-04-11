@@ -37,7 +37,10 @@
                     <th>EMAIL</th>
                     <th>ADDRESS</th>
                     <th>Image Photo</th>
+                    
+                    @if($resolved == false)
                     <th colspan="3">Buttons</th>
+                    @endif
                     @can('isAdmin', record::class)
                         <th>DOWNLOAD</th>
                         <th>EDIT</th>
@@ -69,8 +72,12 @@
                         {{-- <td><a href={{"update-complaint/".$users['id']}}>Update</a> --}}
 
                         {{-- <td><a href={{"delete-complaint/".$users['id']}}>Delete</a> --}}
+                      
+                        @if($users['isResolved'] == 0)
                         <td><a href={{ 'resolved-complaint/' . $users['id'] }}><button type="button"
-                                    class="btn btn-success">Resolved</button></a></td>
+                            class="btn btn-success">Resolved</button></a></td>
+                        @endif
+                            
                     </tr>
                 @endforeach
                 <tr class="table-info">

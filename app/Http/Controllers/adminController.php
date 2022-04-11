@@ -10,12 +10,12 @@ class adminController extends Controller
     public function showComplaint(){
         $data=complaint::where('isResolved',0)->get();
             
-            return view('adminShowComplaint',['data'=>$data]);
+            return view('adminShowComplaint',['data'=>$data ,'resolved' => false]);
     }
     public function showResolvedComplaint(){
         $data=complaint::where('isResolved',1)->get();
             
-            return view('adminShowComplaint',['data'=>$data]);
+            return view('adminShowComplaint',['data'=>$data , 'resolved' => true]);
     }
 
     function resolvedComplaint($id, Request $request)

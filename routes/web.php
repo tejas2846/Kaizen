@@ -26,6 +26,6 @@ Route::post('/add-complaint',[ComplaintController::class,'addComplaint']);
 Route::get('/update-complaint/{id}',[ComplaintController::class,'updateComplaint']);
 Route::post('/update-save-complaint',[ComplaintController::class,'updateSaveComplaint']);
 
-Route::get('/adminComplaint' , [adminController::class,'showComplaint']);
-Route::get('/adminResolvedComplaint' , [adminController::class,'showResolvedComplaint']);
+Route::get('/adminComplaint' , [adminController::class,'showComplaint'])->name('complaint');
+Route::get('/adminResolvedComplaint' , [adminController::class,'showResolvedComplaint'])->name('complaint.unresolved');
 Route::get('/resolved-complaint/{id}' , [adminController::class,'resolvedComplaint']);
