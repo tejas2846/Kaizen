@@ -1,12 +1,12 @@
-<table  class="table table-hover table-fixed">
+<table  class="table table-hover table-fixed" border="2">
     <thead>
       <tr>
         <th>ID</th>
         <th>Name</th>
         <th>EMAIL</th>
         <th>ADDRESS</th>
-        <th>PASSWORD</th>
-        <th>PHOTO</th>
+        <th>Image Photo</th>
+        <th colspan="3">Buttons</th>
         @can('isAdmin',record::class)
         <th>DOWNLOAD</th>
         <th>EDIT</th>
@@ -26,6 +26,7 @@
     <td>{{$users['area']}}</td>
     <td>{{$users['description']}}</td>
     {{-- <td>{{asset('storage/images/'.$users['image_path'])}}</td> --}}
+    
     <td><img src="{{asset('storage/images/'.$users['image'])}}" alt="Not available" width="100px" height=100px /></td>
     
     <td><a href={{"download/".$users['id']}}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
