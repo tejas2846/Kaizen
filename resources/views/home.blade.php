@@ -29,7 +29,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
       <div class="container">
-        <a class="navbar-brand" href="#"><span class="text-primary">Trash</span>-Control</a>
+        <a class="navbar-brand" href="#"><span class="text-primary">Trash</span>-Transfer</a>
 
         <form action="#">
           <div class="input-group input-navbar">
