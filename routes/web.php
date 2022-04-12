@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\adminController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ComplaintController;
@@ -36,3 +37,7 @@ Route::get('login',function(){
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/adminComplaint' , [adminController::class,'showComplaint'])->name('complaint');
+Route::get('/adminResolvedComplaint' , [adminController::class,'showResolvedComplaint'])->name('complaint.unresolved');
+Route::get('/resolved-complaint/{id}' , [adminController::class,'resolvedComplaint']);
