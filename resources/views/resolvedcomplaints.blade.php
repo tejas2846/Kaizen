@@ -71,14 +71,17 @@
         <th>Area</th>
         <th>Complaint</th>
         <th>Image</th>
-      </tr>
+        {{-- @can('isAdmin',record::class) --}}
+
+        {{-- @endcan   --}}
+    </tr>
     </thead>
     <!--Table head-->
 
     <!--Table body-->
     <tbody class="table-striped">
       <?php $counter=1 ?>
-     @foreach($data as $users)
+     @foreach($resolvedcomplaints as $users)
     <tr>
     <th scope="row">{{$users['id']}}</th>
 

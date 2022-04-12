@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
 
   <link rel="stylesheet" href="../assets/css/theme.css">
- 
+
   <style>
  @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,700&display=swap');
 
@@ -53,8 +53,8 @@ body{
   font-size: 19px;
   margin-bottom: 35px;
   padding: 10px;
-  
-  
+
+
 }
 .wrapper .form_container .form_item{
   margin-bottom: 25px;
@@ -121,7 +121,7 @@ textarea{
       <div class="container">
         <a class="navbar-brand" href="#"><span class="text-primary">Trash</span>-Transfer</a>
 
-        
+
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupport" aria-controls="navbarSupport" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -133,23 +133,27 @@ textarea{
               <a class="nav-link" href="{{route('dashboard')}}">Dashboard</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about.html">Resolved Complaints</a>
+              <a class="nav-link" href="/resolvedcomplaints">Resolved Complaints</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="doctors.html">My Complaints</a>
+              <a class="nav-link" href="/mycomplaints">My Complaints</a>
             </li>
-            
-            <li class="nav-item">
-              <a class="btn btn-dark ml-lg-3" href="">Log out</a>
-            </li>
-            
-            
+
+            <a class="" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
           </ul>
         </div> <!-- .navbar-collapse -->
       </div> <!-- .container -->
     </nav>
   </header>
- 
+
 	<div class="wrapper">
       <div class="form_container">
 	  <form name="form" action="/add-complaint" method="post" enctype="multipart/form-data">
@@ -166,7 +170,7 @@ textarea{
                 <option>COMP2</option>
                 <option>COMP3</option>
             </select>
-            <div class="error" id="city"></div>  
+            <div class="error" id="city"></div>
         </div>
     <div class="form_item">
             <label>Area</label>
@@ -179,22 +183,22 @@ textarea{
                 <option>MG LIBRARY</option>
                 <option>ISRO</option>
             </select>
-            <div class="error" id="country"></div>  
+            <div class="error" id="country"></div>
         </div>
     </div>
 			<div class="form">
 				<div class="form_item">
 					<label>Compaint Description</label>
 					<textarea style="resize: none;" name="description" id="" cols="10" rows="5"></textarea>
-                
-                    <div class="error" id="fname"></div>  
+
+                    <div class="error" id="fname"></div>
 				</div>
 			</div>
 			<div class="form">
                 <div class="form_item">
 					<label>Add Image Of Issue</label>
 					<input type="file" name="image" id="image">
-					<div class="error" id="fname"></div>  
+					<div class="error" id="fname"></div>
 				</div>
 			</div>
 
@@ -213,6 +217,6 @@ textarea{
 <script src="../assets/vendor/wow/wow.min.js"></script>
 
 <script src="../assets/js/theme.js"></script>
-  
+
 </body>
 </html>
