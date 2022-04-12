@@ -24,8 +24,8 @@ class ComplaintController extends Controller
         $req->file('image')->storeAs('public/images',$imageName );
         $complaint->image=$imageName;
         $complaint->save();
-        $data=complaint::all();
-        return view('dashboard',['data'=>$data]);
+         $data=complaint::all();
+        return redirect('/dashboard');
         }
         public function updateComplaint(Request $req){
             $complaint=complaint::find($req->id);
@@ -40,12 +40,18 @@ class ComplaintController extends Controller
             $complaint->save();
             $data=complaint::all();
             
-            return view('dashboard',['data'=>$data]);
+            return redirect('/dashboard');
         }
         public function dashboard(){
             $data=complaint::all();
             
             return view('dashboard',['data'=>$data]);
             
+        }
+        public function deleteComplaint(Request $req){
+            $complaint=complaint::find($req->id);
+            $complaint->delete();
+            //dd($complaint);
+            return redirect()->back();
         }
 }

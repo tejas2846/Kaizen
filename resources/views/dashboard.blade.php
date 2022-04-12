@@ -1,23 +1,81 @@
-<table  class="table table-hover table-fixed">
-    <thead>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../assets/css/maicons.css">
+
+  <link rel="stylesheet" href="../assets/css/bootstrap.css">
+
+  <link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.carousel.css">
+
+  <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
+
+  <link rel="stylesheet" href="../assets/css/theme.css">
+  <title>Document</title>
+</head>
+<body>
+
+  <header>
+
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+      <div class="container">
+        <a class="navbar-brand" href="#"><span class="text-primary">Trash</span>-Transfer</a>
+
+        
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupport" aria-controls="navbarSupport" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupport">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{{route('dashboard')}}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{route('add-complaint')}}">Add Complaints</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">Resolved Complaints</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="doctors.html">My Complaints</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="btn btn-dark ml-lg-3" href="">Log out</a>
+            </li>
+            
+            
+          </ul>
+        </div> <!-- .navbar-collapse -->
+      </div> <!-- .container -->
+    </nav>
+  </header>
+<div class="container mt-3">
+  <table  class="table table-hover table-fixed table-stripped">
+    <thead class="thead-dark">
       <tr>
         <th>ID</th>
         <th>Name</th>
-        <th>EMAIL</th>
-        <th>ADDRESS</th>
-        <th>PASSWORD</th>
-        <th>PHOTO</th>
-        @can('isAdmin',record::class)
-        <th>DOWNLOAD</th>
-        <th>EDIT</th>
-        <th>DELETE</th>
-        @endcan  
+        <th>Area</th>
+        <th>Complaint</th>
+        <th>Image</th>
+        {{-- @can('isAdmin',record::class) --}}
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Status</th>
+
+        {{-- @endcan   --}}
     </tr>
     </thead>
     <!--Table head-->
   
     <!--Table body-->
-    <tbody>
+    <tbody class="table-striped">
+      <?php $counter=1 ?>
      @foreach($data as $users)
     <tr>
     <th scope="row">{{$users['id']}}</th>
@@ -26,16 +84,15 @@
     <td>{{$users['area']}}</td>
     <td>{{$users['description']}}</td>
     {{-- <td>{{asset('storage/images/'.$users['image_path'])}}</td> --}}
+    
     <td><img src="{{asset('storage/images/'.$users['image'])}}" alt="Not available" width="100px" height=100px /></td>
     
-    <td><a href={{"download/".$users['id']}}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
-        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-        <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-      </svg>Download</a></td>
+    
 
     <td><a href={{"update-complaint/".$users['id']}}>Update</a>
     
-    <td><a href={{"delete-complaint/".$users['id']}}>Delete</a>
+    <td><a href={{"deleteComplaint/".$users['id']}}>Delete</a>
+    <td><button type="button" class="btn" style="background-color:#07be94;"><a href="" style="color:black">Resolved</a></button>
     </tr>
    
     @endforeach<tr class="table-info">
@@ -44,3 +101,26 @@
     
     </tbody>
     </table>
+  </div>
+    <script src="../assets/js/jquery-3.5.1.min.js"></script>
+
+<script src="../assets/js/bootstrap.bundle.min.js"></script>
+
+<script src="../assets/vendor/owl-carousel/js/owl.carousel.min.js"></script>
+
+<script src="../assets/vendor/wow/wow.min.js"></script>
+
+<script src="../assets/js/theme.js"></script>
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
