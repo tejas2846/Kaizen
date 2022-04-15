@@ -40,6 +40,7 @@ class ComplaintController extends Controller
             $complaint->save();
             $data=complaint::all();
             
+            
             return view('dashboard',['data'=>$data]);
         }
         public function dashboard(){
