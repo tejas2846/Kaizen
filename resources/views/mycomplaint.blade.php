@@ -19,7 +19,7 @@
 
   <header>
 
-    <nav class=" navbar navbar-expand-lg navbar-light shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
       <div class="container">
         <a class="navbar-brand" href="#"><span class="text-primary">Trash</span>-Transfer</a>
 
@@ -71,16 +71,23 @@
         <th>Area</th>
         <th>Complaint</th>
         <th>Image</th>
-      </tr>
+        {{-- @can('isAdmin',record::class) --}}
+        <th>Edit</th>
+
+        <th>Status</th>
+
+        {{-- @endcan   --}}
+    </tr>
     </thead>
     <!--Table head-->
 
     <!--Table body-->
     <tbody class="table-striped">
       <?php $counter=1 ?>
-     @foreach($data as $users)
+     @foreach($mycomplaint as $users)
     <tr>
-    <th scope="row">{{$users['id']}}</th>
+        @if($users->isResolved==0)
+        <th scope="row">{{$users['id']}}</th>
 
     <td>{{$users['type']}}</td>
     <td>{{$users['area']}}</td>
@@ -91,7 +98,12 @@
 
 
 
-    </tr>
+    <td><a href={{"update-complaint/".$users['id']}}>Update</a>
+
+   <td><button type="button" class="btn" style="background-color:#07be94;"><a href="resolvedmycomplaints/{{$users['id']}}" style="color:black">Resolved</a></button>
+
+   @endif
+  </tr>
 
     @endforeach<tr class="table-info">
 

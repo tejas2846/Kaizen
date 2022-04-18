@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\adminController;
 use App\Http\Controllers\ComplaintController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -16,23 +17,36 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
-
-    // return view('welcome');
     return view('home_123');
 });
-Route::get('/add-complaint', function () {
-    return view('add-compaint');
-});
-Route::get('/dashboard', [ComplaintController::class, 'dashboard']);
-Route::post('/add-complaint', [ComplaintController::class, 'addComplaint']);
-Route::get('/update-complaint/{id}', [ComplaintController::class, 'updateComplaint']);
-Route::post('/update-save-complaint', [ComplaintController::class, 'updateSaveComplaint']);
+
 Route::get('login', function () {
     return redirect('/login');
 });
 Route::get('login', function () {
     return redirect('/register');
 });
+
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// admin user
+    Route::group(['middleware' => 'auth','middleware'=>'can:isAdmin'], function () {
+        Route::get('/adminComplaint', [adminController::class, 'showComplaint'])->name('complaint');
+        Route::get('/adminResolvedComplaint', [adminController::class, 'showResolvedComplaint'])->name('complaint.unresolved');
+        Route::get('/resolved-complaint/{id}', [adminController::class, 'resolvedComplaint']);
+  
+    });
+ //simple user   
+    Route::group(['middleware' => 'auth'], function () {
+    Route::get('/dashboard', [ComplaintController::class, 'dashboard'])->name('dashboard');
+    Route::get('/add-complaint', function () {
+        return view('add-compaint'); });
+    Route::post('/add-complaint', [ComplaintController::class, 'addComplaint'])->name('add-complaint');
+    Route::get('/update-complaint/{id}', [ComplaintController::class, 'updateComplaint']);
+    Route::post('/update-save-complaint', [ComplaintController::class, 'updateSaveComplaint']);
+    Route::post('/update-save-complaint', [ComplaintController::class, 'updateSaveComplaint']);
+    Route::get('/deleteComplaint/{id}', [ComplaintController::class, 'deleteComplaint']);
+    Route::get('/mycomplaints', [ComplaintController::class, 'mycomplaints']);
+    Route::get('/resolvedcomplaints', [ComplaintController::class, 'resolvedcomplaints']);
+    Route::get('/resolvedmycomplaints/{id}', [ComplaintController::class, 'resolvedmycomplaints'])->name('resolvedmycomplaints');
+});
