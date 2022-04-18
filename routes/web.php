@@ -29,18 +29,18 @@ Route::get('login', function () {
 
 Auth::routes();
 
-Route::group(['middleware' => 'Auth'], function () {
-
-    Route::group(['middleware' => 'isadmin'], function () {
+// admin user
+    Route::group(['middleware' => 'auth','middleware'=>'can:isAdmin'], function () {
         Route::get('/adminComplaint', [adminController::class, 'showComplaint'])->name('complaint');
         Route::get('/adminResolvedComplaint', [adminController::class, 'showResolvedComplaint'])->name('complaint.unresolved');
         Route::get('/resolved-complaint/{id}', [adminController::class, 'resolvedComplaint']);
+  
     });
-
-    Route::get('/add-complaint', function () {
-        return view('add-compaint');
-    });
+ //simple user   
+    Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', [ComplaintController::class, 'dashboard'])->name('dashboard');
+    Route::get('/add-complaint', function () {
+        return view('add-compaint'); });
     Route::post('/add-complaint', [ComplaintController::class, 'addComplaint'])->name('add-complaint');
     Route::get('/update-complaint/{id}', [ComplaintController::class, 'updateComplaint']);
     Route::post('/update-save-complaint', [ComplaintController::class, 'updateSaveComplaint']);

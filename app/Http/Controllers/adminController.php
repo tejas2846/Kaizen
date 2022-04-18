@@ -8,14 +8,15 @@ use App\Models\complaint;
 class adminController extends Controller
 {
     public function showComplaint(){
+    
         $data=complaint::where('isResolved',0)->orderBy('updated_at', 'DESC')->paginate(2);
             
-            return view('adminShowComplaint',['data'=>$data ,'resolved' => false]);
+            return view('admindashboard',['data'=>$data ,'resolved' => false]);
     }
     public function showResolvedComplaint(){
         $data=complaint::where('isResolved',1)->orderBy('updated_at', 'DESC')->paginate(2);
             
-            return view('adminShowComplaint',['data'=>$data , 'resolved' => true]);
+            return view('admindashboard',['data'=>$data , 'resolved' => true]);
     }
 
     function resolvedComplaint($id, Request $request)

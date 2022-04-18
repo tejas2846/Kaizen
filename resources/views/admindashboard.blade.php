@@ -30,11 +30,15 @@
                 <div class="collapse navbar-collapse d-flex flex-row-reverse" id="navbarSupport">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link text-primary" href="/adminComplaint">New Complaint</a>
+                            <a class="nav-link text-primary" href="/adminComplaint">Home</a>
                         </li>
 
-                        <li class="nav-item active">
-                            <a class="nav-link text-primary" href="/adminResolvedComplaint">Resolved Complaint</a>
+                        {{-- <li class="nav-item">
+                            <a class="nav-link" href="/adminComplaint">New Complaint</a>
+                        </li> --}}
+
+                        <li class="nav-item mr-5">
+                            <a class="nav-link " href="/adminResolvedComplaint">Resolved Complaint</a>
                         </li>
 
                         <a class="" href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -61,14 +65,13 @@
         </div>
     @endif
 
-    <div class="container">
-        <table class="table table-hover table-fixed table-striped" border="2">
-            <thead>
-                <tr>
+    <div class="container mt-3">
+        <table  class="table table-hover table-fixed table-stripped">
+            <thead class="thead-dark">        <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>EMAIL</th>
-                    <th>ADDRESS</th>
+                    <th>Complaint Type</th>
+                    <th>Area</th>
+                    <th>Description</th>
                     <th>Image Photo</th>
 
                     @if ($resolved == false)

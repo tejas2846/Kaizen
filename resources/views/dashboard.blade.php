@@ -19,7 +19,7 @@
 
   <header>
 
-    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+    <nav class=" navbar navbar-expand-lg navbar-light shadow-sm">
       <div class="container">
         <a class="navbar-brand" href="#"><span class="text-primary">Trash</span>-Transfer</a>
 

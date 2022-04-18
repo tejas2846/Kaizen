@@ -45,10 +45,19 @@ class ComplaintController extends Controller
             return redirect('/dashboard');
         }
         public function dashboard(){
-            $data=complaint::all();
+            if(auth()->user()->isAdmin==1){
+                $data=complaint::where('isResolved',0)->orderBy('updated_at', 'DESC')->paginate(2);
+            
+                return view('admindashboard',['data'=>$data ,'resolved' => false]);
+             
+            } 
+            else{
+                $data=complaint::all();
+           
+                return view('dashboard',['data'=>$data]);
 
-            return view('dashboard',['data'=>$data]);
-
+            }
+           
         }
         public function deleteComplaint(Request $req){
             $complaint=complaint::find($req->id);

@@ -165,10 +165,10 @@ textarea{
           <div class="form_item">
             <label>Compaint Type</label>
             <select name="type">
-                <option>COMPAINT1</option>
-                <option>COM2</option>
-                <option>COMP2</option>
-                <option>COMP3</option>
+                <option>TOILET CLEANING</option>
+                <option>WATER CLEANING</option>
+                <option>STREET CLEANING</option>
+                <option>GARBAGE DUMP PROBLEM</option>
             </select>
             <div class="error" id="city"></div>
         </div>
@@ -182,7 +182,21 @@ textarea{
                 <option>AIRPORT</option>
                 <option>MG LIBRARY</option>
                 <option>ISRO</option>
-            </select>
+                <option>CHANDLODIYA</option>
+                <option>GATLODIYA</option>
+                <option>NAVRANGPURA</option>
+                <option>NARANPURA</option>
+                <option>VASTRAPUR</option>
+                <option>VASTRAL</option>
+                <option>MANINAGAR</option>
+                <option>KALUPUR</option>
+                <option>BAPUNAGAR</option>
+                <option>GEETA MANDIR</option>
+                <option>MEMNAGAR</option>
+                <option>SATELITE</option>
+                <option>C G ROAD</option>
+            
+              </select>
             <div class="error" id="country"></div>
         </div>
     </div>
