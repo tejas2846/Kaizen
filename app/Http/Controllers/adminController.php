@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\complaint;
+use Illuminate\Http\Request;
+use App\Events\ResolvedComplaintMail;
 
 class adminController extends Controller
 {
@@ -21,9 +22,13 @@ class adminController extends Controller
 
     function resolvedComplaint($id, Request $request)
     {
+        
         $Complaint = complaint::find($id);
         $request->session()->flash('status', 'Complaint ' . $Complaint->id . ' resolved successfully');
-
+        $user=$Complaint->user()->get();
+        event(new ResolvedComplaintMail($user));
+       // dd("jay shree ram");
+         //return response()->json(['meassage'=>$user]); 
         $Complaint->isResolved = 1;
         $Complaint->save();
         return redirect()->back();

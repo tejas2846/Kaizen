@@ -98,7 +98,8 @@
 
 
 
-    <td><a href={{"update-complaint/".$users['id']}}>Update</a>
+    {{-- <td><a href={{"update-complaint/".$users['id']}}>Update</a> --}}
+      <td><button type="button" class="btn" style="background-color:#07be94;"><a href={{"update-complaint/".$users['id']}} style="color:black">Edit</a></button>
 
    <td><button type="button" class="btn" style="background-color:#07be94;"><a href="resolvedmycomplaints/{{$users['id']}}" style="color:black">Resolved</a></button>
 
